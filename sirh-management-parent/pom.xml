@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.sirhmanagement</groupId>
+  <artifactId>sirh-management-parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>sirh-management-parent (Parent project)</name>
+  <description>Prototype de gestion du sirh</description>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+  
+  <modules>
+	<module>sirh-management-presentation</module>
+	<module>sirh-management-business</module>
+	<module>sirh-management-persistence</module>	
+	<module>sirh-management-commons</module>
+  </modules>
+
+  <dependencyManagement>
+	<dependencies>
+		<!-- Versions des sous-projets a utiliser en cas d'inter-dependances -->
+		<dependency>
+			<groupId>org.sirhmanagement</groupId>
+			<artifactId>sirh-management-commons</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.sirhmanagement</groupId>
+			<artifactId>sirh-management-persistence</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+		
+		<!-- log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+  </dependencyManagement>
+  
+  <build>
+	<!-- Configuration des plugins h�rit�e par les sous-projets -->
+	<pluginManagement>
+		<plugins>
+			<!-- Compilation -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+   </build>
+</project>
